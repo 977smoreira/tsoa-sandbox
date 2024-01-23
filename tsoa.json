@@ -7,6 +7,6 @@
   },
   "spec": {
     "outputDirectory": "build",
-    "specVersion": 3
+    "specVersion": 2
   }
 }

@@ -1,5 +1,4 @@
-const allStatus = ['Happy', 'Sad', 'Hungry'] as const;
-export type Status = (typeof allStatus)[number];
+export type Status = 'Happy' | 'Sad' | 'Hungry';
 
 export type BadStatus = Extract<Status, 'Sad' | 'Hungry'>;
 

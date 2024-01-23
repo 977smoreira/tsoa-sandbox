@@ -1,20 +1,20 @@
 import { Controller, Get, Query, Route } from 'tsoa';
 import { BadStatus, BadStatusRequest, Status } from './model';
 
-@Route('/status')
+@Route('/mystatus')
 export class MyStatusController extends Controller {
   @Get('/')
-  public getMyStatus(@Query() status: Status): string {
-    return status;
+  public getMyStatus(@Query() mystatus: Status): string {
+    return mystatus;
   }
 
   /*
     Generate routes error.
-    GenerateMetadataError: @Query('status') Can't support 'refAlias' type.
+    GenerateMetadataError: Maximum call stack size exceeded 
   */
   @Get('/bad')
-  public getMyBadStatus(@Query() status: BadStatus): string {
-    return status;
+  public getMyBadStatus(@Query() mystatus1: BadStatus): string {
+    return mystatus1;
   }
 
   /*
@@ -24,7 +24,7 @@ export class MyStatusController extends Controller {
     GenerateMetadataError: Unknown type: IntrinsicKeyword
   */
   @Get('/uppercase-bad')
-  public getMyBadStatusMixedCase(@Query() status: BadStatusRequest): string {
-    return status;
+  public getMyBadStatusMixedCase(@Query() mystatus2: BadStatusRequest): string {
+    return mystatus2;
   }
 }
