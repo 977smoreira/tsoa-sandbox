@@ -7,20 +7,10 @@ trigger: none
 pr: none
 
 stages:
- - stage: Build
-    displayName: Build stage
+  - stage: Build
     jobs:
       - job: Build
-        displayName: Build
         pool:
           name: dev-nl-dbw-agent-pool
-        workspace:
-          clean: all
-
         steps:
-          - checkout: self
-            persistCredentials: true
-          - task: UseNode@1
-            inputs:
-              version: '20.x'
-            displayName: 'Install Node.js'
+          - script: echo "hello to my first Build"
