@@ -7,11 +7,20 @@ trigger: none
 pr: none
 
 stages:
-  - stage: Build
-  jobs:
-  - job: Build
-    pool:
-      vmImage: 'Ubuntu-16.04'
-    continueOnError: true
-    steps:
-    - script: echo "hello to my first Build"
+ - stage: Build
+    displayName: Build stage
+    jobs:
+      - job: Build
+        displayName: Build
+        pool:
+          name: dev-nl-dbw-agent-pool
+        workspace:
+          clean: all
+
+        steps:
+          - checkout: self
+            persistCredentials: true
+          - task: UseNode@1
+            inputs:
+              version: '20.x'
+            displayName: 'Install Node.js'
